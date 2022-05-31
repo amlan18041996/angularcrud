@@ -1,0 +1,42 @@
+<div class="container mb-5">
+    <h1>Article CRUD</h1>
+    <div class="d-flex justify-content-between">
+        <a href="#" routerLink="/post/create/" class="btn btn-success mb-2">Create New Article</a>
+        <div>
+            <select name="tableLimit" id="tableLimit" class="form-select" (change)="fetchData($event, '')">
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">ID</th>
+                <th scope="col" class="text-center">Title</th>
+                <th scope="col" class="text-center">Body</th>
+                <th scope="col" class="text-center" width="220px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let post of posts; let i = index">
+                <th class="align-middle" scope="row">{{ i+1 }}</th>
+                <td class="align-middle">{{ post.title }}</td>
+                <td class="align-middle">{{ post.body }}</td>
+                <td class="align-middle">
+                    <div class="d-flex justify-content-between">
+                        <a href="#" [routerLink]="['/post/', post.id, 'view']" class="btn btn-info">View</a>
+                        <a href="#" [routerLink]="['/post/', post.id, 'edit']" class="btn btn-primary">Edit</a>
+                        <button type="button" (click)="deletePost(post.id)" class="btn btn-danger">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center gap-2">
+        <button (click)="fetchData(paginateNum, links.previousUrl)" class="btn btn-primary">Previous</button>
+        <button (click)="fetchData(paginateNum, links.nextUrl)" class="btn btn-primary">Next</button>
+    </div>
+ </div>

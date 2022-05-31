@@ -1,0 +1,34 @@
+<div class="container">
+    <h1>Product CRUD</h1>
+    <div class="d-flex justify-content-between">
+        <a href="#" routerLink="/product/create/" class="btn btn-success mb-2">Create New Product</a>
+        <div>
+            <input type="text" class="form-control" (keyup.enter)="fetchProducts($event)" placeholder="Search by name and enter..." >
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">ID</th>
+                <th scope="col" class="text-center">Product Name</th>
+                <th scope="col" class="text-center">Description</th>
+                <th scope="col" class="text-center" width="220px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products; let i = index">
+                <th class="align-middle" scope="row">{{ i+1 }}</th>
+                <td class="align-middle">{{ product.name }}</td>
+                <td class="align-middle">{{ product.description }}</td>
+                <td class="align-middle">
+                    <div class="d-flex justify-content-between">
+                        <a href="#" [routerLink]="['/product/', product.id, 'view']" class="btn btn-info">View</a>
+                        <a href="#" [routerLink]="['/product/', product.id, 'edit']" class="btn btn-primary">Edit</a>
+                        <button type="button" (click)="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
+                        <!-- <button type="button" (click)="openModal(post.id)" class="btn btn-danger">Delete</button> -->
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+ </div>
