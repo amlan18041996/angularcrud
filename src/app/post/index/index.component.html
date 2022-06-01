@@ -22,10 +22,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let post of posts; let i = index">
-                <th class="align-middle" scope="row">{{ i+1 }}</th>
-                <td class="align-middle">{{ post.title }}</td>
-                <td class="align-middle">{{ post.body }}</td>
-                <td class="align-middle">
+                <th class="text-center align-middle" scope="row">{{ post.id }}</th>
+                <td class="text-center align-middle">{{ post.title }}</td>
+                <td class="text-center align-middle">{{ post.body }}</td>
+                <td class="text-center align-middle">
                     <div class="d-flex justify-content-between">
                         <a href="#" [routerLink]="['/post/', post.id, 'view']" class="btn btn-info">View</a>
                         <a href="#" [routerLink]="['/post/', post.id, 'edit']" class="btn btn-primary">Edit</a>
@@ -36,7 +36,15 @@
         </tbody>
     </table>
     <div class="d-flex justify-content-center gap-2">
-        <button (click)="fetchData(paginateNum, links.previousUrl)" class="btn btn-primary">Previous</button>
-        <button (click)="fetchData(paginateNum, links.nextUrl)" class="btn btn-primary">Next</button>
+        <button 
+            class="btn btn-primary" 
+            *ngIf="links.previousUrl" 
+            (click)="fetchData(paginateNum, links.previousUrl)"
+        >Previous</button>
+        <button 
+            *ngIf="links.nextUrl" 
+            class="btn btn-primary" 
+            (click)="fetchData(paginateNum, links.nextUrl)"
+        >Next</button>
     </div>
  </div>
