@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { PostModule } from './post/post.module';
 import { ProductModule } from './product/product.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserModule } from './user/user.module';
   
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     PostModule,
     ProductModule,
+    UserModule,
     HttpClientModule
   ],
   providers: [],

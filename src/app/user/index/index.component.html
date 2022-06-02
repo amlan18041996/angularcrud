@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>User CRUD</h1>
+    <div class="d-flex justify-content-between">
+        <a href="#" routerLink="/user/create/" class="btn btn-success mb-2">Create New User</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">ID</th>
+                <th scope="col" class="text-center">Name</th>
+                <th scope="col" class="text-center">email</th>
+                <th scope="col" class="text-center" width="220px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; let i = index">
+                <th class="text-center align-middle" scope="row">{{ i+1 }}</th>
+                <td class="text-center align-middle">{{ user.name }}</td>
+                <td class="text-center align-middle">{{ user.email }}</td>
+                <td class="align-middle">
+                    <div class="d-flex justify-content-between">
+                        <a href="#" [routerLink]="['/user/', user.id, 'view']" class="btn btn-info">View</a>
+                        <a href="#" [routerLink]="['/user/', user.id, 'edit']" class="btn btn-primary">Edit</a>
+                        <button type="button" (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
+                        <!-- <button type="button" (click)="openModal(post.id)" class="btn btn-danger">Delete</button> -->
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+ </div>

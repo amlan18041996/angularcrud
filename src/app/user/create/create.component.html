@@ -1,0 +1,64 @@
+<div class="container">
+    <h1>Create New User</h1>
+    <a href="#" routerLink="/user/index" class="btn btn-primary">Back</a>
+         
+    <form [formGroup]="form" (ngSubmit)="submit()">
+   
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input
+                formControlName="name"
+                id="name"
+                type="text"
+                class="form-control"
+            >
+            <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger p-2 my-2">
+                <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+            </div>
+        </div>
+   
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input
+                formControlName="email"
+                id="email"
+                type="email"
+                class="form-control"
+            >
+            <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger p-2 my-2">
+                <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+                <div *ngIf="f['email'].errors && f['email'].errors['email']">Email is invalid.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+                formControlName="phone"
+                id="phone"
+                type="text"
+                class="form-control"
+            >
+            <div *ngIf="f['phone'].touched && f['phone'].invalid" class="alert alert-danger p-2 my-2">
+                <div *ngIf="f['phone'].errors && f['phone'].errors['required']">Phone is required.</div>
+                <div *ngIf="f['phone'].errors && f['phone'].errors['pattern']">Enter 10 digit Mobile Number.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="website">Website</label>
+            <input
+                formControlName="website"
+                id="website"
+                type="text"
+                class="form-control"
+            >
+            <div *ngIf="f['website'].touched && f['website'].invalid" class="alert alert-danger p-2 my-2">
+                <div *ngIf="f['website'].errors && f['website'].errors['required']">Website is required.</div>
+                <div *ngIf="f['website'].errors && f['website'].errors['pattern']">URL is invalid.</div>
+            </div>
+        </div>
+   
+        <button class="btn btn-primary mt-2" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
