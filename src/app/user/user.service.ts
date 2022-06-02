@@ -10,7 +10,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
-    private apiURL = "http://jsonplaceholder.typicode.com/users";
+    private apiURL = "https://jsonplaceholder.typicode.com/users";
 
     httpOptions = {
         headers: new HttpHeaders({
