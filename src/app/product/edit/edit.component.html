@@ -1,76 +1,82 @@
 <div class="container">
-    <h1>Update Product</h1>
-    <a href="#" routerLink="/product/index" class="btn btn-primary mb-2">Back</a>
+    <h1>Create New Product</h1>
         
     <form [formGroup]="form" (ngSubmit)="submit()">
-  
         <div class="form-group mb-2">
             <label for="name">Product Name:</label>
             <input 
-                formControlName="name"
                 id="name" 
                 type="text" 
-                readonly
-                [(ngModel)]="product.name"
-                class="form-control">
-            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-                <div *ngIf="f.name.errors?.['required']">Name is required.</div>
-            </div>
+                class="form-control" 
+                formControlName="name" 
+                [(ngModel)]="product.name" 
+                [ngClass]="{ 'is-invalid': f.name.touched && f.name.invalid }"
+            >
+            <div class="invalid-feedback d-block" *ngIf="f.name.touched && f.name.invalid && f.name.errors?.['required']">Name is required.</div>
+            <div class="invalid-feedback d-block" *ngIf="f.name.touched && f.name.invalid && f.name.errors?.['minlength']">Name must contain minimum 5 characters.</div>
+            <div class="invalid-feedback d-block" *ngIf="f.name.touched && f.name.invalid && f.name.errors?.['maxlength']">Name must contain maximum 50 characters.</div>
         </div>
-         
+  
         <div class="form-group mb-2">
             <label for="description">Description</label>
             <textarea 
-                formControlName="description"
-                id="description" 
                 type="text" 
-                [(ngModel)]="product.description"
-                class="form-control">
+                id="description" 
+                class="form-control" 
+                formControlName="description" 
+                [(ngModel)]="product.description" 
+                [ngClass]="{ 'is-invalid': f.description.touched && f.description.invalid }"
+            >
             </textarea>
-            <div *ngIf="f.description.touched && f.description.invalid" class="alert alert-danger">
-                <div *ngIf="f.description.errors?.['required']">Description is required.</div>
-            </div>
+            <div class="invalid-feedback d-block" *ngIf="f.description.touched && f.description.invalid && f.description.errors?.['required']">Description is required.</div>
+            <div class="invalid-feedback d-block" *ngIf="f.description.touched && f.description.invalid && f.description.errors?.['minlength']">Description must contain minimum 5 characters.</div>
+            <div class="invalid-feedback d-block" *ngIf="f.description.touched && f.description.invalid && f.description.errors?.['maxlength']">Description must contain maximum 100 characters.</div>
         </div>
 
         <div class="form-group mb-2">
             <label for="company">Company</label>
             <input 
-                formControlName="company"
-                id="company" 
                 type="text" 
-                [(ngModel)]="product.company"
-                class="form-control">
-            <div *ngIf="f.company.touched && f.company.invalid" class="alert alert-danger">
-                <div *ngIf="f.company.errors?.['required']">Company is required.</div>
-            </div>
+                id="company" 
+                class="form-control" 
+                formControlName="company" 
+                [(ngModel)]="product.company" 
+                [ngClass]="{ 'is-invalid': f.company.touched && f.company.invalid }"
+            >
+            <div class="invalid-feedback d-block" *ngIf="f.company.touched && f.company.invalid && f.company.errors?.['required']">Company is required.</div>
         </div>
-
+        
         <div class="form-group mb-2">
             <label for="price">Price</label>
             <input 
-                formControlName="price"
                 id="price" 
                 type="text" 
-                [(ngModel)]="product.price"
-                class="form-control">
-            <div *ngIf="f.price.touched && f.price.invalid" class="alert alert-danger">
-                <div *ngIf="f.price.errors?.['required']">Price is required.</div>
-            </div>
+                class="form-control" 
+                formControlName="price" 
+                [(ngModel)]="product.price" 
+                [ngClass]="{ 'is-invalid': f.price.touched && f.price.invalid }"
+            >
+            <div class="invalid-feedback d-block" *ngIf="f.price.touched && f.price.invalid && f.price.errors?.['required']">Price is required.</div>
+            <div class="invalid-feedback d-block" *ngIf="f.price.touched && f.price.invalid && f.price.errors?.['pattern']">Price must be numeric.</div>
         </div>
 
         <div class="form-group mb-2">
             <label for="quantity">Quantity</label>
             <input 
-                formControlName="quantity"
-                id="quantity" 
                 type="text" 
-                [(ngModel)]="product.quantity"
-                class="form-control">
-            <div *ngIf="f.quantity.touched && f.quantity.invalid" class="alert alert-danger">
-                <div *ngIf="f.quantity.errors?.['required']">Quantity is required.</div>
-            </div>
+                id="quantity" 
+                class="form-control" 
+                formControlName="quantity" 
+                [(ngModel)]="product.quantity" 
+                [ngClass]="{ 'is-invalid': f.quantity.touched && f.quantity.invalid }"
+            >
+            <div class="invalid-feedback d-block" *ngIf="f.quantity.touched && f.quantity.invalid && f.quantity.errors?.['required']">Quantity is required.</div>
+            <div class="invalid-feedback d-block" *ngIf="f.quantity.touched && f.quantity.invalid && f.quantity.errors?.['pattern']">Quantity must be numeric.</div>
         </div>
-        
-        <button class="btn btn-primary mt-2" type="submit" [disabled]="!form.valid">Update</button>
+  
+        <div class="d-flex justify-content-around my-3">
+            <a href="#" routerLink="/product/index" class="btn btn-primary">Back</a>
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+        </div>
     </form>
 </div>

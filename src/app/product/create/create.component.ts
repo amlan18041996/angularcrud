@@ -16,11 +16,11 @@ export class CreateComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = new FormGroup({
-            name: new FormControl('', [Validators.required]),
-            description: new FormControl('', Validators.required),
-            company: new FormControl('', Validators.required),
-            price: new FormControl('', Validators.required),
-            quantity: new FormControl('', Validators.required),
+            name: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]),
+            description: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(200)]),
+            company: new FormControl('', [Validators.required]),
+            price: new FormControl('', [Validators.required, Validators.pattern(/\-?\d*\.?\d{1,2}/)]),
+            quantity: new FormControl('', [Validators.required, Validators.pattern(/\-?\d*\.?\d{1,2}/)]),
         });
     }
 

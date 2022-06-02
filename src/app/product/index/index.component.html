@@ -17,9 +17,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let product of products; let i = index">
-                <th class="align-middle" scope="row">{{ i+1 }}</th>
-                <td class="align-middle">{{ product.name }}</td>
-                <td class="align-middle">{{ product.description }}</td>
+                <th class="text-center align-middle" scope="row">{{ i+1 }}</th>
+                <td class="text-center align-middle">{{ product.name }}</td>
+                <td class="text-center align-middle">{{ product.description }}</td>
                 <td class="align-middle">
                     <div class="d-flex justify-content-between">
                         <a href="#" [routerLink]="['/product/', product.id, 'view']" class="btn btn-info">View</a>

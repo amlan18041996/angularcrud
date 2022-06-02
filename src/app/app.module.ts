@@ -18,9 +18,9 @@ import { UserModule } from './user/user.module';
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    PostModule,
+    // PostModule,
     ProductModule,
-    UserModule,
+    // UserModule,
     HttpClientModule
   ],
   providers: [],
